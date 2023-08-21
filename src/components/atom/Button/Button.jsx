@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Button as ReactstrapButton } from 'reactstrap';
 
-const Button = ({ children, forHtml, size }) => {
+const Button = ({ children, forHtml, color, size, onClick }) => {
     return (
-        <ReactstrapButton className={size} for={forHtml}>{children}</ReactstrapButton>
+        <ReactstrapButton color={color} className={size} for={forHtml} onClick={onClick}>{children}</ReactstrapButton>
     )
 }
 

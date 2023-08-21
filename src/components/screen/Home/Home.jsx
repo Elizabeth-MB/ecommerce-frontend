@@ -1,31 +1,31 @@
 import { Link } from "react-router-dom";
-// import { getUsers } from "../../../api";
-// import { useEffect, useState } from "react";
-// // import Loading from "../../atom/Loading/Loading";
+import { getUsers } from "../../../api";
+import { useEffect, useState } from "react";
+import Loading from "../../atom/Loading/Loading";
 
 // import { FcAlarmClock } from "react-icons/fc";
 
 const Home = () => {
-  /* const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [users, setUsers] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     getUsers().then((response) => setUsers(response.data));
   }, []);
 
+  // useEffect(() => {setLoading(false)}, [users])
+  /* setTimeout no es lo más recomendable para usar dentro de un useEffect */
   useEffect(() => {
     setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  }, [users]);
- */
+      setLoading(false)
+    }, 3000)
+  }, [users])
+
   return (
     <>
-    <p>Welcome to My home Page</p>
-    <Link to="/login">go to login</Link>
-      {/* {loading ? (
-        // <Loading />
-        <FcAlarmClock />
+      {loading ? (
+        <Loading />
+        // <FcAlarmClock />
       ) : (
         <>
           <div>Welcome to my Home Page 🏠</div>
@@ -40,7 +40,7 @@ const Home = () => {
             <Link to="/dashboard">Go to dashboard</Link>
           </div>
         </>
-      )} */}
+      )}
     </>
   );
 };

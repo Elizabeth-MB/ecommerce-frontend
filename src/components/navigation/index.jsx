@@ -1,9 +1,10 @@
 import App from '../../App.jsx';
-import Login from '../screen/Login/Login.jsx'
+import Login from '../screen/Login/Login.jsx';
 
 import {
-    createBrowserRouter
+  createBrowserRouter
 } from "react-router-dom";
+import Register from '../screen/Register/Register.jsx';
 
   /* función para crear una ruta */
 const router = createBrowserRouter([
@@ -16,8 +17,8 @@ const router = createBrowserRouter([
       element: <Login />,
     },
     {
-      path: "/dashboard",
-      element: <div>Dashboard</div>,
+      path: "/register",
+      element: <Register />,
     },
   ]);
 

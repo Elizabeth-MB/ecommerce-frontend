@@ -1,51 +1,53 @@
-import { Input,  FormGroup } from "reactstrap";
-import Label from "../../atom/Label/Label";
-import Button from "../../atom/Button/Button";
-import { useState } from "react";
+// import { useState } from "react";
+import { Link } from "react-router-dom";
+import Navbar from "../../templates/Navbar/Navbar";
 
 function Login() {
-  const [user, setUser] = useState("oicrruf");
-  const [password, setPassword] = useState("12345");
-
-  const submit = () => {
-    console.log({
-      user, password
-    });
-  };
 
   return (
-    <div>
-      <div className="w-50">
-        <div className="my-3">
-          <FormGroup>
-            <Label 
-            // size="fs-3" 
-            forHtml="user">User</Label>
-            <Input
-              value={user}
-              id="user"
-              className="mb-2"
-              placeholder="user"
-              onChange={e => setUser(e.target.value)}
-              ></Input>
-          </FormGroup>
-          <FormGroup>
-            <Label size="fs-1" forHtml="password">Password</Label>
-            <Input
-              value={password}
-              id="password"
-              className="mb-2"
-              placeholder="password"
+    <>
+      <Navbar></Navbar>
+
+      <div className="container mt-5">
+        <h2>Iniciar sesión</h2>
+        <form>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+              Correo electrónico
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              name="email"
+              // value={formData.email}
+              // onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">
+              Contraseña
+            </label>
+            <input
               type="password"
-              onChange={e => setPassword(e.target.value)}
-            ></Input>
-          </FormGroup>
-        </div>
-        <Button color="success" onClick={submit}>
-          Login
-        </Button>
+              className="form-control"
+              id="password"
+              name="password"
+              // value={formData.password}
+              // onChange={handleInputChange}
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Iniciar sesión
+          </button>
+          <p className="mt-3">
+            ¿No tienes una cuenta? <Link to="/register">Regístrate</Link>
+          </p>
+        </form>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -1,44 +1,54 @@
-import { Link } from "react-router-dom";
-import { getUsers } from "../../../api";
+// import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getProducts } from "../../../api";
 import Loading from "../../atom/Loading/Loading";
+import Card from "../../templates/Card/Card";
 
-// import { FcAlarmClock } from "react-icons/fc";
 
 const Home = () => {
-  const [users, setUsers] = useState([])
+  // const [users, setUsers] = useState([])
+  const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    getUsers().then((response) => setUsers(response.data));
+    getProducts().then((response) => setProducts(response.data.productos));
   }, []);
 
-  // useEffect(() => {setLoading(false)}, [users])
-  /* setTimeout no es lo más recomendable para usar dentro de un useEffect */
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false)
-    }, 3000)
-  }, [users])
+  useEffect(() => { setLoading(false) }, [products])
 
   return (
     <>
       {loading ? (
         <Loading />
-        // <FcAlarmClock />
       ) : (
         <>
-          <div>Welcome to my Home Page 🏠</div>
-          <pre>{JSON.stringify(users)}</pre>
-          <div>
-            <Link to="/login">Go to login</Link>
+
+          <h1>Conoce todos los productos que tenemos para ti</h1>
+          <div className="d-flex flex-row flex-wrap">
+            {products.map((product) => (
+              <Card
+                key={product.id}
+                img={product.img}
+                nombre={product.nombre }
+                precio={product.precio || "Precio no disponible"}
+                descripcion={product.descripcion || "Descripción no disponible"}
+                categoria={product.categoria || "Categoría no disponible"}
+              />
+            ))}
           </div>
-          <div>
-            <Link to="/register">Go to register</Link>
-          </div>
-          <div>
-            <Link to="/dashboard">Go to dashboard</Link>
-          </div>
+          {/* <div className="cards-container">
+            {products.map(product => (
+              <Card
+                key={product.id} // Asegúrate de tener una clave única para cada iteración
+                nombre={product.nombre}
+                precio={product.precio}
+                descripcion={product.descripcion}
+                categoria={product.categoria}
+              />
+            ))}
+          </div> */}
+          <Card></Card>
+          <pre>{JSON.stringify(products)}</pre>
         </>
       )}
     </>

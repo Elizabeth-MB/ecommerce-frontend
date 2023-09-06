@@ -1,5 +1,6 @@
 import App from '../../App.jsx';
 import Login from '../screen/Login/Login.jsx';
+import Dashboard from '../screen/Dashboard/Dashboard.jsx';
 
 import {
   createBrowserRouter
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     {
       path: "/register",
       element: <Register />,
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard />,
     },
   ]);
 
